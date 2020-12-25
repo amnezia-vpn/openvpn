@@ -24,81 +24,9 @@ env:
 
 jobs:
   include:
-    - name: cl
-      env:
-      - SSLLIB="openssl"
-      - OPENSSL_VERSION="1.1.1d"
-      - P7Z="c:\Program Files\7-Zip\7z.exe"
-      - CC="cl"
-      os: windows
-      compiler: cl
-    - name: Coverity scan
-      env: SSLLIB="openssl" RUN_COVERITY="1"
-      os: linux
-      compiler: gcc
-    - name: gcc | openssl-1.1.1d
-      env: SSLLIB="openssl" OPENSSL_VERSION="1.1.1d"
-      os: linux
-      arch: amd64
-      compiler: gcc
-    - name: gcc | openssl-1.1.1d
-      env: SSLLIB="openssl" OPENSSL_VERSION="1.1.1d"
-      os: linux
-      arch: ppc64le
-      compiler: gcc
-    - name: gcc | openssl-1.1.1d
-      env: SSLLIB="openssl" OPENSSL_VERSION="1.1.1d"
-      os: linux
-      arch: arm64
-      compiler: gcc
-    - name: gcc | openssl-1.1.1d
-      env: SSLLIB="openssl" OPENSSL_VERSION="1.1.1d"
-      os: linux
-      arch: s390x
-      compiler: gcc
-    - name: gcc | openssl-1.0.2u | iproute2
-      env: SSLLIB="openssl" EXTRA_CONFIG="--enable-iproute2"
-      os: linux
-      compiler: gcc
-    - name: clang+asan | openssl-1.0.2u
-      env: SSLLIB="openssl" CFLAGS="-fsanitize=address" CC=clang-9
-      os: linux
-      compiler: clang
-    - name: clang | openssl-1.1.1d
-      env: SSLLIB="openssl" OPENSSL_VERSION="1.1.1d" CC=clang-9
-      os: linux
-      compiler: clang
-    - name: gcc | mbedtls
-      env: SSLLIB="mbedtls"
-      os: linux
-      compiler: gcc
-    - name: clang+asan | mbedtls
-      env: SSLLIB="mbedtls" CFLAGS="-fsanitize=address" CC=clang-9
-      os: linux
-      compiler: clang
     - name: clang | openssl-1.0.2u
       env: SSLLIB="openssl"
       os: osx
-      compiler: clang
-    - name: clang | mbedtls
-      env: SSLLIB="mbedtls"
-      os: osx
-      compiler: clang
-    - name: mingw64 | openssl-1.1.1d
-      env: SSLLIB="openssl" CHOST=x86_64-w64-mingw32 OPENSSL_VERSION="1.1.1d"
-      os: linux
-      compiler: ": Win64 build only"
-    - name: mingw32 | openssl-1.0.2u
-      env: SSLLIB="openssl" CHOST=i686-w64-mingw32
-      os: linux
-      compiler: ": Win32 build only"
-    - name: clang | openssl-1.0.2u | disable-lzo | distcheck
-      env: SSLLIB="openssl" EXTRA_CONFIG="--disable-lzo" EXTRA_SCRIPT="make distcheck" CC=clang-9
-      os: linux
-      compiler: clang
-    - name: clang | openssl-1.0.2u | enable-small
-      env: SSLLIB="openssl" EXTRA_CONFIG="--enable-small" CC=clang-9
-      os: linux
       compiler: clang
 
 addons:
