@@ -100,7 +100,7 @@ download_openssl () {
 build_openssl_linux () {
     (
         cd "openssl-${OPENSSL_VERSION}/"
-        ./config -static -no-shared --prefix="${PREFIX}" --openssldir="${PREFIX}" -DPURIFY
+        ./config no-shared --prefix="${PREFIX}" --openssldir="${PREFIX}" -DPURIFY
         make all install_sw
     )
 }
@@ -108,7 +108,7 @@ build_openssl_linux () {
 build_openssl_osx () {
     (
         cd "openssl-${OPENSSL_VERSION}/"
-        ./Configure darwin64-x86_64-cc -static -no-shared \
+        ./Configure darwin64-x86_64-cc no-shared \
             --prefix="${PREFIX}" --openssldir="${PREFIX}" -DPURIFY
         make depend all install_sw
     )
