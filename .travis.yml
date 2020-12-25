@@ -45,7 +45,7 @@ cache:
 
 install:
   - if [ ! -z "${CHOST}" ]; then unset CC; fi
-  - travis_wait 30 bash -c '.travis/build-deps.sh > build-deps.log 2>&1' || (cat build-deps.log && exit 1)
+  - .travis/build-deps.sh
 
 before_script:
   - .travis/coverity.sh
