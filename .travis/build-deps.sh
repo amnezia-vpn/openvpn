@@ -30,7 +30,6 @@ download_lzo () {
 }
 
 build_lzo () {
-    if [ "$(cat ${PREFIX}/.lzo-version)" != "${LZO_VERSION}" ]; then
         tar zxf download-cache/lzo-${LZO_VERSION}.tar.gz
         (
             cd "lzo-${LZO_VERSION}"
@@ -40,7 +39,6 @@ build_lzo () {
             make all install
         )
         echo "${LZO_VERSION}" > "${PREFIX}/.lzo-version"
-    fi
 }
 
 download_pkcs11_helper () {
