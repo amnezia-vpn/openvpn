@@ -12,7 +12,7 @@ if [ -z ${CHOST+x} ]; then
 	if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
 		export EXTRA_CONFIG="${EXTRA_CONFIG:-} --enable-werror"
 	fi
-	./configure --with-crypto-library="${SSLLIB}" --disable-server --enable-static --disable-shared --disable-debug  ${EXTRA_CONFIG:-} || (cat config.log && exit 1)
+	./configure --with-crypto-library="${SSLLIB}" --enable-static --disable-shared ${EXTRA_CONFIG:-} || (cat config.log && exit 1)
 	make LDFLAGS="-Wl,-rpath,${PREFIX}/lib" LIBS="-all-static" -j$JOBS
 	src/openvpn/openvpn --version || true
 	if [ "${TRAVIS_OS_NAME}" = "linux" ]; then

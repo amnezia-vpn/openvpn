@@ -36,7 +36,7 @@ build_lzo () {
             cd "lzo-${LZO_VERSION}"
 
             ./configure --host=${CHOST} --program-prefix='' \
-                --libdir=${PREFIX}/lib --prefix=${PREFIX} --build=x86_64-pc-linux-gnu
+                --libdir=${PREFIX}/lib --prefix=${PREFIX} --build=x86_64-pc-linux-gnu --enable-static
             make all install
         )
         echo "${LZO_VERSION}" > "${PREFIX}/.lzo-version"
@@ -100,7 +100,7 @@ download_openssl () {
 build_openssl_linux () {
     (
         cd "openssl-${OPENSSL_VERSION}/"
-        ./config shared --prefix="${PREFIX}" --openssldir="${PREFIX}" -DPURIFY
+        ./config -static -no-shared --prefix="${PREFIX}" --openssldir="${PREFIX}" -DPURIFY
         make all install_sw
     )
 }
@@ -108,7 +108,7 @@ build_openssl_linux () {
 build_openssl_osx () {
     (
         cd "openssl-${OPENSSL_VERSION}/"
-        ./Configure darwin64-x86_64-cc shared \
+        ./Configure darwin64-x86_64-cc -static -no-shared \
             --prefix="${PREFIX}" --openssldir="${PREFIX}" -DPURIFY
         make depend all install_sw
     )
