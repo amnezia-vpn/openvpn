@@ -40,7 +40,7 @@ addons:
 cache:
   directories:
   - download-cache
-  - ${HOME}/opt
+  #- ${HOME}/opt
   - ${HOME}/Library/Caches/Homebrew
 
 install:
