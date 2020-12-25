@@ -154,14 +154,15 @@ else
     exit 1
 fi
 
+# Download and build lzo static
+download_lzo
+build_lzo
+	  
 # Download and build dependencies for mingw cross build
 # dependencies are the same as in regular windows installer build
 if [ ! -z ${CHOST+x} ]; then
       download_tap_windows
       unzip download-cache/tap-windows-${TAP_WINDOWS_VERSION}.zip
-
-      download_lzo
-      build_lzo
 
       download_pkcs11_helper
       build_pkcs11_helper
