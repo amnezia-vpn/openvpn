@@ -34,7 +34,7 @@ build_lzo () {
         (
             cd "lzo-${LZO_VERSION}"
 
-            ./configure --host=${CHOST} --program-prefix='' \
+            ./configure --program-prefix='' \
                 --libdir=${PREFIX}/lib --prefix=${PREFIX} --build=x86_64-pc-linux-gnu --enable-static
             make all install
         )
